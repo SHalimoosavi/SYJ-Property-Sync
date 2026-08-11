@@ -111,6 +111,7 @@ The core business proposition, made tangible:
 Each stage below animates through **Pending → Running → Completed** (or **Warning** / **Failed**) in the live app, with a progress line that fills as stages complete:
 
 ```mermaid
+%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#E4EEEE', 'primaryTextColor':'#14213A', 'primaryBorderColor':'#1F6F78', 'lineColor':'#5B6B78', 'secondaryColor':'#F5F7F6', 'secondaryTextColor':'#14213A', 'secondaryBorderColor':'#DEE3E1', 'tertiaryColor':'#EEF0F3', 'tertiaryTextColor':'#14213A', 'tertiaryBorderColor':'#8A93A6', 'mainBkg':'#E4EEEE', 'clusterBkg':'#F5F7F6', 'clusterBorder':'#DEE3E1', 'edgeLabelBackground':'#F5F7F6', 'fontFamily':'Inter, Segoe UI, sans-serif', 'actorBkg':'#E4EEEE', 'actorBorder':'#1F6F78', 'actorTextColor':'#14213A', 'actorLineColor':'#8A93A6', 'signalColor':'#5B6B78', 'signalTextColor':'#14213A', 'labelBoxBkgColor':'#F5F7F6', 'labelBoxBorderColor':'#1F6F78', 'labelTextColor':'#14213A', 'loopTextColor':'#14213A', 'noteBkgColor':'#FBF0DD', 'noteTextColor':'#14213A', 'noteBorderColor':'#B9770E', 'activationBkgColor':'#E4EEEE', 'activationBorderColor':'#1F6F78' }}}%%
 flowchart LR
     A([📝 Change<br/>Detected]) --> B([✅ Data<br/>Validation])
     B --> C([🔤 Data<br/>Normalization])
@@ -141,6 +142,7 @@ flowchart LR
 ## 🏗 System architecture
 
 ```mermaid
+%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#E4EEEE', 'primaryTextColor':'#14213A', 'primaryBorderColor':'#1F6F78', 'lineColor':'#5B6B78', 'secondaryColor':'#F5F7F6', 'secondaryTextColor':'#14213A', 'secondaryBorderColor':'#DEE3E1', 'tertiaryColor':'#EEF0F3', 'tertiaryTextColor':'#14213A', 'tertiaryBorderColor':'#8A93A6', 'mainBkg':'#E4EEEE', 'clusterBkg':'#F5F7F6', 'clusterBorder':'#DEE3E1', 'edgeLabelBackground':'#F5F7F6', 'fontFamily':'Inter, Segoe UI, sans-serif', 'actorBkg':'#E4EEEE', 'actorBorder':'#1F6F78', 'actorTextColor':'#14213A', 'actorLineColor':'#8A93A6', 'signalColor':'#5B6B78', 'signalTextColor':'#14213A', 'labelBoxBkgColor':'#F5F7F6', 'labelBoxBorderColor':'#1F6F78', 'labelTextColor':'#14213A', 'loopTextColor':'#14213A', 'noteBkgColor':'#FBF0DD', 'noteTextColor':'#14213A', 'noteBorderColor':'#B9770E', 'activationBkgColor':'#E4EEEE', 'activationBorderColor':'#1F6F78' }}}%%
 graph TB
     subgraph Browser["🖥️ Browser — everything runs here"]
         subgraph UI["React UI Layer"]
@@ -178,15 +180,14 @@ graph TB
     Runner -.->|"simulated calls"| Portal
     Store --> Other
 
-    style Browser fill:#F5F7F6,stroke:#DEE3E1
     style Mock fill:#E4EEEE,stroke:#1F6F78
-    style Services fill:#FFFFFF,stroke:#DEE3E1
 ```
 
 > [!TIP]
 > **Why this shape?** Validation, normalization, duplicate detection, and the connector layer are kept in separate, isolated modules (`src/services/engine.ts`, `src/services/usePipelineRunner.ts`) specifically so a **real backend** (FastAPI + SQLite, per the original architecture brief) could later replace the mock layer **without rewriting the UI**.
 
 ```mermaid
+%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#E4EEEE', 'primaryTextColor':'#14213A', 'primaryBorderColor':'#1F6F78', 'lineColor':'#5B6B78', 'secondaryColor':'#F5F7F6', 'secondaryTextColor':'#14213A', 'secondaryBorderColor':'#DEE3E1', 'tertiaryColor':'#EEF0F3', 'tertiaryTextColor':'#14213A', 'tertiaryBorderColor':'#8A93A6', 'mainBkg':'#E4EEEE', 'clusterBkg':'#F5F7F6', 'clusterBorder':'#DEE3E1', 'edgeLabelBackground':'#F5F7F6', 'fontFamily':'Inter, Segoe UI, sans-serif', 'actorBkg':'#E4EEEE', 'actorBorder':'#1F6F78', 'actorTextColor':'#14213A', 'actorLineColor':'#8A93A6', 'signalColor':'#5B6B78', 'signalTextColor':'#14213A', 'labelBoxBkgColor':'#F5F7F6', 'labelBoxBorderColor':'#1F6F78', 'labelTextColor':'#14213A', 'loopTextColor':'#14213A', 'noteBkgColor':'#FBF0DD', 'noteTextColor':'#14213A', 'noteBorderColor':'#B9770E', 'activationBkgColor':'#E4EEEE', 'activationBorderColor':'#1F6F78' }}}%%
 graph LR
     A["React UI"] -->|"today"| B["In-memory mock store<br/>(this repo)"]
     A -.->|"future"| C["REST API<br/>FastAPI + Pydantic"]
@@ -208,6 +209,7 @@ graph LR
 *What actually happens when you click "Save & Synchronize":*
 
 ```mermaid
+%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#E4EEEE', 'primaryTextColor':'#14213A', 'primaryBorderColor':'#1F6F78', 'lineColor':'#5B6B78', 'secondaryColor':'#F5F7F6', 'secondaryTextColor':'#14213A', 'secondaryBorderColor':'#DEE3E1', 'tertiaryColor':'#EEF0F3', 'tertiaryTextColor':'#14213A', 'tertiaryBorderColor':'#8A93A6', 'mainBkg':'#E4EEEE', 'clusterBkg':'#F5F7F6', 'clusterBorder':'#DEE3E1', 'edgeLabelBackground':'#F5F7F6', 'fontFamily':'Inter, Segoe UI, sans-serif', 'actorBkg':'#E4EEEE', 'actorBorder':'#1F6F78', 'actorTextColor':'#14213A', 'actorLineColor':'#8A93A6', 'signalColor':'#5B6B78', 'signalTextColor':'#14213A', 'labelBoxBkgColor':'#F5F7F6', 'labelBoxBorderColor':'#1F6F78', 'labelTextColor':'#14213A', 'loopTextColor':'#14213A', 'noteBkgColor':'#FBF0DD', 'noteTextColor':'#14213A', 'noteBorderColor':'#B9770E', 'activationBkgColor':'#E4EEEE', 'activationBorderColor':'#1F6F78' }}}%%
 sequenceDiagram
     actor U as Demo Admin
     participant UI as PropertyDetail page
@@ -265,6 +267,7 @@ sequenceDiagram
 ## 🗃 Data model
 
 ```mermaid
+%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#E4EEEE', 'primaryTextColor':'#14213A', 'primaryBorderColor':'#1F6F78', 'lineColor':'#5B6B78', 'secondaryColor':'#F5F7F6', 'secondaryTextColor':'#14213A', 'secondaryBorderColor':'#DEE3E1', 'tertiaryColor':'#EEF0F3', 'tertiaryTextColor':'#14213A', 'tertiaryBorderColor':'#8A93A6', 'mainBkg':'#E4EEEE', 'clusterBkg':'#F5F7F6', 'clusterBorder':'#DEE3E1', 'edgeLabelBackground':'#F5F7F6', 'fontFamily':'Inter, Segoe UI, sans-serif', 'actorBkg':'#E4EEEE', 'actorBorder':'#1F6F78', 'actorTextColor':'#14213A', 'actorLineColor':'#8A93A6', 'signalColor':'#5B6B78', 'signalTextColor':'#14213A', 'labelBoxBkgColor':'#F5F7F6', 'labelBoxBorderColor':'#1F6F78', 'labelTextColor':'#14213A', 'loopTextColor':'#14213A', 'noteBkgColor':'#FBF0DD', 'noteTextColor':'#14213A', 'noteBorderColor':'#B9770E', 'activationBkgColor':'#E4EEEE', 'activationBorderColor':'#1F6F78' }}}%%
 erDiagram
     PROPERTY ||--o{ SYNC_JOB : generates
     PROPERTY ||--o{ AUDIT_ENTRY : generates
@@ -318,6 +321,7 @@ Finnish is the default language for the TSVV demo. Every user-facing string — 
 > There are **no hardcoded UI strings** anywhere in the application — this was verified line-by-line against the full translation key set before release.
 
 ```mermaid
+%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#E4EEEE', 'primaryTextColor':'#14213A', 'primaryBorderColor':'#1F6F78', 'lineColor':'#5B6B78', 'secondaryColor':'#F5F7F6', 'secondaryTextColor':'#14213A', 'secondaryBorderColor':'#DEE3E1', 'tertiaryColor':'#EEF0F3', 'tertiaryTextColor':'#14213A', 'tertiaryBorderColor':'#8A93A6', 'mainBkg':'#E4EEEE', 'clusterBkg':'#F5F7F6', 'clusterBorder':'#DEE3E1', 'edgeLabelBackground':'#F5F7F6', 'fontFamily':'Inter, Segoe UI, sans-serif', 'actorBkg':'#E4EEEE', 'actorBorder':'#1F6F78', 'actorTextColor':'#14213A', 'actorLineColor':'#8A93A6', 'signalColor':'#5B6B78', 'signalTextColor':'#14213A', 'labelBoxBkgColor':'#F5F7F6', 'labelBoxBorderColor':'#1F6F78', 'labelTextColor':'#14213A', 'loopTextColor':'#14213A', 'noteBkgColor':'#FBF0DD', 'noteTextColor':'#14213A', 'noteBorderColor':'#B9770E', 'activationBkgColor':'#E4EEEE', 'activationBorderColor':'#1F6F78' }}}%%
 graph TD
     A["src/i18n/locales/en.ts<br/>master key set — 307 keys"] --> B["fi.ts 🇫🇮 default"]
     A --> C["en.ts 🇬🇧"]
@@ -607,6 +611,7 @@ git push -u origin main
 ```
 
 ```mermaid
+%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#E4EEEE', 'primaryTextColor':'#14213A', 'primaryBorderColor':'#1F6F78', 'lineColor':'#5B6B78', 'secondaryColor':'#F5F7F6', 'secondaryTextColor':'#14213A', 'secondaryBorderColor':'#DEE3E1', 'tertiaryColor':'#EEF0F3', 'tertiaryTextColor':'#14213A', 'tertiaryBorderColor':'#8A93A6', 'mainBkg':'#E4EEEE', 'clusterBkg':'#F5F7F6', 'clusterBorder':'#DEE3E1', 'edgeLabelBackground':'#F5F7F6', 'fontFamily':'Inter, Segoe UI, sans-serif', 'actorBkg':'#E4EEEE', 'actorBorder':'#1F6F78', 'actorTextColor':'#14213A', 'actorLineColor':'#8A93A6', 'signalColor':'#5B6B78', 'signalTextColor':'#14213A', 'labelBoxBkgColor':'#F5F7F6', 'labelBoxBorderColor':'#1F6F78', 'labelTextColor':'#14213A', 'loopTextColor':'#14213A', 'noteBkgColor':'#FBF0DD', 'noteTextColor':'#14213A', 'noteBorderColor':'#B9770E', 'activationBkgColor':'#E4EEEE', 'activationBorderColor':'#1F6F78' }}}%%
 graph LR
     A["Your machine"] -->|"git init / add / commit"| B["Local repo"]
     B -->|"git push"| C["GitHub"]
